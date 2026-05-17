@@ -410,6 +410,109 @@ function LandingPage() {
         </div>
       </section>
 
+      {/* AI EDITOR */}
+      <section id="ai-editor" className="relative overflow-hidden py-24 md:py-32">
+        <div className="absolute inset-0 hero-grid opacity-[0.04] pointer-events-none" />
+        <div className="mx-auto max-w-6xl px-6 relative">
+          <div className="text-center max-w-2xl mx-auto">
+            <div className="inline-flex items-center gap-2 font-mono-tech text-xs uppercase tracking-[0.25em] text-primary px-3 py-1.5 rounded-full border border-primary/30 bg-primary/5">
+              {t.aiEyebrow}
+            </div>
+            <h2 className="mt-5 font-display text-4xl md:text-5xl">{t.aiTitle}</h2>
+            <p className="mt-4 text-muted-foreground text-lg">{t.aiSub}</p>
+          </div>
+
+          <div className="mt-14 grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
+            {/* Chat mockup */}
+            <RevealItem>
+              <div
+                className="lg:col-span-3 rounded-3xl p-6 md:p-8 h-full bg-background"
+                style={{ border: "1px solid oklch(0.55 0.13 17 / 0.4)", boxShadow: "var(--shadow-card)" }}
+              >
+                <div className="flex items-center gap-2 pb-4 border-b border-border">
+                  <div className="flex gap-1.5">
+                    <span className="w-2.5 h-2.5 rounded-full bg-[oklch(0.7_0.18_25)]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[oklch(0.8_0.15_85)]" />
+                    <span className="w-2.5 h-2.5 rounded-full bg-[oklch(0.72_0.18_145)]" />
+                  </div>
+                  <span className="ml-3 font-mono-tech text-xs text-muted-foreground uppercase tracking-wider">
+                    shaqiru.kz / ai-editor
+                  </span>
+                </div>
+
+                {/* User prompt bubble */}
+                <div className="mt-6 flex justify-end">
+                  <div className="max-w-[85%]">
+                    <div className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground text-right mb-1.5">
+                      {t.aiPromptLabel}
+                    </div>
+                    <div className="cta-shimmer text-primary-foreground px-4 py-3 rounded-2xl rounded-tr-sm text-sm">
+                      {t.aiDemoPrompt}
+                      <span className="inline-block w-[2px] h-3.5 bg-primary-foreground/90 ml-1 align-middle animate-pulse" />
+                    </div>
+                  </div>
+                </div>
+
+                {/* AI result bubble: before / after */}
+                <div className="mt-6">
+                  <div className="font-mono-tech text-[10px] uppercase tracking-widest text-muted-foreground mb-1.5 flex items-center gap-2">
+                    <Wand2 className="w-3 h-3 text-primary" /> {t.aiResultLabel}
+                  </div>
+                  <div className="grid grid-cols-2 gap-3">
+                    <div className="rounded-xl overflow-hidden border border-border relative bg-[oklch(0.96_0.012_60)] aspect-[3/4] flex flex-col items-center justify-center p-4">
+                      <div className="font-display text-base text-[oklch(0.38_0.03_30)]">Aselle &amp; Daulet</div>
+                      <div className="font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground mt-1">12.07.2026</div>
+                      <span className="absolute top-2 left-2 font-mono-tech text-[9px] uppercase tracking-widest text-muted-foreground bg-background/80 px-1.5 py-0.5 rounded">
+                        {t.aiDemoBefore}
+                      </span>
+                    </div>
+                    <div
+                      className="rounded-xl overflow-hidden border border-primary/30 relative aspect-[3/4] flex flex-col items-center justify-center p-4 text-cream"
+                      style={{ background: "linear-gradient(160deg, oklch(0.28 0.06 155), oklch(0.18 0.05 160))" }}
+                    >
+                      <div className="font-display text-2xl">Aselle &amp; Daulet</div>
+                      <div className="font-mono-tech text-[10px] uppercase tracking-widest text-cream/70 mt-2">12.07.2026</div>
+                      <span className="absolute top-2 left-2 font-mono-tech text-[9px] uppercase tracking-widest text-cream/90 bg-foreground/40 px-1.5 py-0.5 rounded">
+                        {t.aiDemoAfter}
+                      </span>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </RevealItem>
+
+            {/* Examples list */}
+            <RevealItem delay={120}>
+              <div className="lg:col-span-2 h-full flex flex-col">
+                <div className="font-mono-tech text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
+                  {t.aiExamplesTitle}
+                </div>
+                <div className="space-y-3 flex-1">
+                  {t.aiExamples.map((ex, i) => (
+                    <div key={i} className="glass rounded-2xl p-4">
+                      <div className="flex items-start gap-2 text-sm">
+                        <span className="font-mono-tech text-primary mt-0.5 shrink-0">{">"}</span>
+                        <span className="text-foreground/90">{ex.cmd}</span>
+                      </div>
+                      <div className="flex items-start gap-2 mt-2 text-xs text-muted-foreground pl-5">
+                        <Check className="w-3.5 h-3.5 text-primary shrink-0 mt-0.5" />
+                        <span>{ex.res}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+                <a
+                  href="#templates"
+                  className="cta-shimmer mt-6 inline-flex items-center justify-center gap-2 text-primary-foreground font-medium px-6 py-3.5 rounded-full text-sm"
+                >
+                  {t.aiCta} <ArrowRight className="w-4 h-4" />
+                </a>
+              </div>
+            </RevealItem>
+          </div>
+        </div>
+      </section>
+
       {/* BENEFITS */}
       <Section eyebrow={t.benefitsEyebrow} title={t.benefitsTitle}>
         <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
