@@ -252,8 +252,16 @@ function Stat({ value, suffix, label }: { value: number; suffix: string; label: 
 /* ---------- page ---------- */
 function LandingPage() {
   const [lang, setLang] = useState<Lang>("kz");
+  const [mobileOpen, setMobileOpen] = useState(false);
   const t = COPY[lang];
   const parallaxY = useParallax();
+
+  const navLinks = [
+    { href: "#templates", label: t.nav.templates },
+    { href: "#how", label: t.nav.how },
+    { href: "#ai-editor", label: "AI" },
+    { href: "#pricing", label: t.nav.pricing },
+  ];
 
   return (
     <main className="min-h-screen bg-background text-foreground">
