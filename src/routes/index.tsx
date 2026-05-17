@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight, ArrowDown, MousePointerClick, Pencil, Share2,
-  Zap, Sparkles, Wallet, Check, Star, Wand2,
+  Zap, Sparkles, Wallet, Check, Star, Wand2, Menu, X,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
@@ -252,8 +252,16 @@ function Stat({ value, suffix, label }: { value: number; suffix: string; label: 
 /* ---------- page ---------- */
 function LandingPage() {
   const [lang, setLang] = useState<Lang>("kz");
+  const [mobileOpen, setMobileOpen] = useState(false);
   const t = COPY[lang];
   const parallaxY = useParallax();
+
+  const navLinks = [
+    { href: "#templates", label: t.nav.templates },
+    { href: "#how", label: t.nav.how },
+    { href: "#ai-editor", label: "AI" },
+    { href: "#pricing", label: t.nav.pricing },
+  ];
 
   return (
     <main className="min-h-screen bg-background text-foreground">
@@ -264,11 +272,11 @@ function LandingPage() {
             <a href="#top" className="font-display text-xl font-semibold tracking-tight">
               Shaqiru<span className="text-primary">KZ</span>
             </a>
+            {/* Desktop nav */}
             <nav className="hidden md:flex items-center gap-7 text-sm text-ink-soft">
-              <a href="#templates" className="hover:text-foreground transition">{t.nav.templates}</a>
-              <a href="#how" className="hover:text-foreground transition">{t.nav.how}</a>
-              <a href="#ai-editor" className="hover:text-foreground transition">AI</a>
-              <a href="#pricing" className="hover:text-foreground transition">{t.nav.pricing}</a>
+              {navLinks.map((l) => (
+                <a key={l.href} href={l.href} className="hover:text-foreground transition">{l.label}</a>
+              ))}
             </nav>
             <div className="flex items-center gap-2">
               <div className="font-mono-tech text-xs flex rounded-full border border-border overflow-hidden">
@@ -278,7 +286,35 @@ function LandingPage() {
               <Link to="/" className="hidden sm:inline-flex cta-shimmer text-primary-foreground text-sm font-medium px-4 py-2 rounded-full">
                 {t.nav.cta}
               </Link>
+              {/* Mobile burger */}
+              <button
+                onClick={() => setMobileOpen((o) => !o)}
+                className="md:hidden inline-flex items-center justify-center w-9 h-9 rounded-full border border-border text-foreground"
+                aria-label="Toggle menu"
+              >
+                {mobileOpen ? <X className="w-4 h-4" /> : <Menu className="w-4 h-4" />}
+              </button>
             </div>
+          </div>
+          {/* Mobile dropdown */}
+          <div
+            className={cn(
+              "md:hidden mt-2 glass rounded-2xl overflow-hidden transition-all duration-300",
+              mobileOpen ? "max-h-64 opacity-100" : "max-h-0 opacity-0"
+            )}
+          >
+            <nav className="flex flex-col p-2">
+              {navLinks.map((l) => (
+                <a
+                  key={l.href}
+                  href={l.href}
+                  onClick={() => setMobileOpen(false)}
+                  className="px-4 py-3 text-sm text-ink-soft hover:text-foreground hover:bg-accent/40 rounded-xl transition"
+                >
+                  {l.label}
+                </a>
+              ))}
+            </nav>
           </div>
         </div>
       </header>
