@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight, ArrowDown, MousePointerClick, Pencil, Share2,
-  Zap, Sparkles, Wallet, Check, Star, Wand2,
+  Zap, Sparkles, Wallet, Check, Star, Wand2, Menu, X,
 } from "lucide-react";
 
 import { cn } from "@/lib/utils";
