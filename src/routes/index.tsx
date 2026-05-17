@@ -664,10 +664,10 @@ function Header({ eyebrow, title, sub }: { eyebrow: string; title: string; sub?:
   );
 }
 
-function RevealItem({ children, delay = 0 }: { children: React.ReactNode; delay?: number }) {
+function RevealItem({ children, delay = 0, className }: { children: React.ReactNode; delay?: number; className?: string }) {
   const ref = useReveal<HTMLDivElement>();
   return (
-    <div ref={ref} className="reveal" style={{ transitionDelay: `${delay}ms` }}>
+    <div ref={ref} className={cn("reveal", className)} style={{ transitionDelay: `${delay}ms` }}>
       {children}
     </div>
   );
