@@ -266,6 +266,7 @@ function LandingPage() {
             <nav className="hidden md:flex items-center gap-7 text-sm text-ink-soft">
               <a href="#templates" className="hover:text-foreground transition">{t.nav.templates}</a>
               <a href="#how" className="hover:text-foreground transition">{t.nav.how}</a>
+              <a href="#ai-editor" className="hover:text-foreground transition">AI</a>
               <a href="#pricing" className="hover:text-foreground transition">{t.nav.pricing}</a>
             </nav>
             <div className="flex items-center gap-2">
