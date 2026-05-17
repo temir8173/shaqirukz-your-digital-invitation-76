@@ -2,7 +2,7 @@ import { createFileRoute, Link } from "@tanstack/react-router";
 import { useEffect, useRef, useState } from "react";
 import {
   ArrowRight, ArrowDown, MousePointerClick, Pencil, Share2,
-  Zap, Sparkles, Wallet, Check, Star,
+  Zap, Sparkles, Wallet, Check, Star, Wand2,
 } from "lucide-react";
 
 import heroBg from "@/assets/hero-bg.jpg";
