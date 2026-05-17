@@ -5,6 +5,7 @@ import {
   Zap, Sparkles, Wallet, Check, Star, Wand2,
 } from "lucide-react";
 
+import { cn } from "@/lib/utils";
 import heroBg from "@/assets/hero-bg.jpg";
 import tplWedding from "@/assets/template-wedding.jpg";
 import tplToi from "@/assets/template-toi.jpg";
