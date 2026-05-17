@@ -425,9 +425,9 @@ function LandingPage() {
 
           <div className="mt-14 grid grid-cols-1 lg:grid-cols-5 gap-8 items-stretch">
             {/* Chat mockup */}
-            <RevealItem>
+            <RevealItem className="lg:col-span-3">
               <div
-                className="lg:col-span-3 rounded-3xl p-6 md:p-8 h-full bg-background"
+                className="rounded-3xl p-6 md:p-8 h-full bg-background"
                 style={{ border: "1px solid oklch(0.55 0.13 17 / 0.4)", boxShadow: "var(--shadow-card)" }}
               >
                 <div className="flex items-center gap-2 pb-4 border-b border-border">
@@ -483,8 +483,8 @@ function LandingPage() {
             </RevealItem>
 
             {/* Examples list */}
-            <RevealItem delay={120}>
-              <div className="lg:col-span-2 h-full flex flex-col">
+            <RevealItem delay={120} className="lg:col-span-2">
+              <div className="h-full flex flex-col">
                 <div className="font-mono-tech text-xs uppercase tracking-[0.2em] text-muted-foreground mb-4">
                   {t.aiExamplesTitle}
                 </div>
