@@ -11,6 +11,7 @@
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CreateIndexRouteImport } from './routes/create.index'
+import { Route as CreatePreviewRouteImport } from './routes/create.preview.'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -22,31 +23,40 @@ const CreateIndexRoute = CreateIndexRouteImport.update({
   path: '/create/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreatePreviewRoute = CreatePreviewRouteImport.update({
+  id: '/create/preview/',
+  path: '/create/preview/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/create/': typeof CreateIndexRoute
+  '/create/preview/': typeof CreatePreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/create': typeof CreateIndexRoute
+  '/create/preview': typeof CreatePreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/create/': typeof CreateIndexRoute
+  '/create/preview/': typeof CreatePreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/create/'
+  fullPaths: '/' | '/create/' | '/create/preview/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/create'
-  id: '__root__' | '/' | '/create/'
+  to: '/' | '/create' | '/create/preview'
+  id: '__root__' | '/' | '/create/' | '/create/preview/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CreateIndexRoute: typeof CreateIndexRoute
+  CreatePreviewRoute: typeof CreatePreviewRoute
 }
 
 declare module '@tanstack/react-router' {
@@ -65,12 +75,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CreateIndexRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/create/preview/': {
+      id: '/create/preview/'
+      path: '/create/preview'
+      fullPath: '/create/preview/'
+      preLoaderRoute: typeof CreatePreviewRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CreateIndexRoute: CreateIndexRoute,
+  CreatePreviewRoute: CreatePreviewRoute,
 }
 export const routeTree = rootRouteImport
   ._addFileChildren(rootRouteChildren)
