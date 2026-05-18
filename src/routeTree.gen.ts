@@ -12,6 +12,7 @@ import { Route as rootRouteImport } from './routes/__root'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CreateIndexRouteImport } from './routes/create.index'
 import { Route as CreatePreviewRouteImport } from './routes/create.preview.'
+import { Route as CreateFillRouteImport } from './routes/create.fill.'
 
 const IndexRoute = IndexRouteImport.update({
   id: '/',
@@ -28,34 +29,43 @@ const CreatePreviewRoute = CreatePreviewRouteImport.update({
   path: '/create/preview/',
   getParentRoute: () => rootRouteImport,
 } as any)
+const CreateFillRoute = CreateFillRouteImport.update({
+  id: '/create/fill/',
+  path: '/create/fill/',
+  getParentRoute: () => rootRouteImport,
+} as any)
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
   '/create/': typeof CreateIndexRoute
+  '/create/fill/': typeof CreateFillRoute
   '/create/preview/': typeof CreatePreviewRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
   '/create': typeof CreateIndexRoute
+  '/create/fill': typeof CreateFillRoute
   '/create/preview': typeof CreatePreviewRoute
 }
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
   '/create/': typeof CreateIndexRoute
+  '/create/fill/': typeof CreateFillRoute
   '/create/preview/': typeof CreatePreviewRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/create/' | '/create/preview/'
+  fullPaths: '/' | '/create/' | '/create/fill/' | '/create/preview/'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/create' | '/create/preview'
-  id: '__root__' | '/' | '/create/' | '/create/preview/'
+  to: '/' | '/create' | '/create/fill' | '/create/preview'
+  id: '__root__' | '/' | '/create/' | '/create/fill/' | '/create/preview/'
   fileRoutesById: FileRoutesById
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
   CreateIndexRoute: typeof CreateIndexRoute
+  CreateFillRoute: typeof CreateFillRoute
   CreatePreviewRoute: typeof CreatePreviewRoute
 }
 
@@ -82,12 +92,20 @@ declare module '@tanstack/react-router' {
       preLoaderRoute: typeof CreatePreviewRouteImport
       parentRoute: typeof rootRouteImport
     }
+    '/create/fill/': {
+      id: '/create/fill/'
+      path: '/create/fill'
+      fullPath: '/create/fill/'
+      preLoaderRoute: typeof CreateFillRouteImport
+      parentRoute: typeof rootRouteImport
+    }
   }
 }
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
   CreateIndexRoute: CreateIndexRoute,
+  CreateFillRoute: CreateFillRoute,
   CreatePreviewRoute: CreatePreviewRoute,
 }
 export const routeTree = rootRouteImport
