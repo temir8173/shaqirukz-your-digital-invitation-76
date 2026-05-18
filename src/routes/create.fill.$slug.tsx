@@ -3,7 +3,7 @@ import { createFileRoute, Link, useNavigate } from "@tanstack/react-router";
 import { ArrowLeft, X, Plus } from "lucide-react";
 import { findTemplate, type Field } from "@/lib/templates-mock";
 
-export const Route = createFileRoute("/create/fill/")({
+export const Route = createFileRoute("/create/fill/$slug")({
   head: ({ params }) => ({
     meta: [{ title: `Толтыру: ${findTemplate(params.slug)?.name ?? ""} — ShaqiruKZ` }],
   }),
