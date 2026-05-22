@@ -328,7 +328,7 @@ function LandingPage() {
             backgroundImage: `url(${heroBg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.7,
+            opacity: 0.95,
             transform: `translate3d(0, ${parallaxY}px, 0)`,
             willChange: "transform",
           }}
@@ -336,7 +336,7 @@ function LandingPage() {
         {/* dark vignette for readability */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, oklch(0.12 0.04 15 / 0.55) 0%, oklch(0.1 0.04 15 / 0.8) 70%, oklch(0.08 0.03 15 / 0.92) 100%)" }}
+          style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, oklch(0.1 0.04 15 / 0.35) 0%, oklch(0.08 0.03 15 / 0.65) 70%, oklch(0.06 0.02 15 / 0.85) 100%)" }}
         />
         {/* grid overlay */}
         <div className="absolute inset-0 hero-grid opacity-30 pointer-events-none" style={{ ["--grid-color" as any]: "oklch(1 0 0 / 0.06)" }} />
