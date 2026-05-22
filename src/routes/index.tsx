@@ -642,7 +642,7 @@ function LandingPage() {
       </Section>
 
       {/* FINAL CTA */}
-      <section className="relative overflow-hidden py-24 md:py-32 text-cream" style={{ background: "var(--hero-bg)" }}>
+      <section className="relative overflow-hidden py-24 md:py-32 text-cream" style={{ background: "oklch(0.22 0.06 20)" }}>
         <div className="absolute inset-0 hero-grid opacity-40" />
         <div className="hero-glow" style={{ top: "50%", left: "50%", transform: "translate(-50%,-50%)", opacity: 0.5 }} />
         <div className="relative z-10 mx-auto max-w-3xl px-6 text-center">
