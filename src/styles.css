@@ -68,8 +68,8 @@
   --ring: oklch(0.55 0.13 17);
 
   /* hero specifics */
-  --hero-bg: oklch(0.16 0.04 20);
-  --hero-glow: oklch(0.55 0.13 17 / 0.45);
+  --hero-bg: oklch(0.96 0.03 15);
+  --hero-glow: oklch(0.82 0.11 12 / 0.55);
 
   /* gradients & shadows */
   --gradient-brand: linear-gradient(135deg, oklch(0.55 0.13 17), oklch(0.62 0.16 25));
@@ -79,7 +79,7 @@
   --shadow-card: 0 2px 4px oklch(0.18 0.02 30 / 0.04), 0 12px 32px -8px oklch(0.18 0.02 30 / 0.1);
 
   /* grid pattern */
-  --grid-color: oklch(1 0 0 / 0.05);
+  --grid-color: oklch(0.55 0.13 17 / 0.06);
 }
 
 @layer base {
