@@ -320,7 +320,7 @@ function LandingPage() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative overflow-hidden text-ink" style={{ background: "var(--hero-bg)" }}>
+      <section id="top" className="relative overflow-hidden text-ink" style={{ background: "linear-gradient(180deg, oklch(0.99 0.005 80) 0%, oklch(0.96 0.03 15) 55%, oklch(0.94 0.04 15) 100%)" }}>
         {/* parallax bg image */}
         <div
           className="absolute inset-0 -z-0 ken-burns"
@@ -328,21 +328,21 @@ function LandingPage() {
             backgroundImage: `url(${heroBg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.85,
+            opacity: 0.35,
             transform: `translate3d(0, ${parallaxY}px, 0)`,
             willChange: "transform",
           }}
         />
-        {/* grid overlay */}
-        <div className="absolute inset-0 hero-grid opacity-40 pointer-events-none" />
-        {/* glow */}
-        <div className="hero-glow" style={{ top: "-12%", right: "-10%" }} />
-        <div className="hero-glow" style={{ bottom: "-20%", left: "-15%", opacity: 0.5 }} />
-        {/* soft white vignette */}
+        {/* center spotlight for readability */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse at center, transparent 30%, oklch(1 0 0 / 0.55) 100%)" }}
+          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 45%, oklch(1 0 0 / 0.85) 0%, oklch(1 0 0 / 0.5) 35%, transparent 75%)" }}
         />
+        {/* grid overlay */}
+        <div className="absolute inset-0 hero-grid opacity-25 pointer-events-none" />
+        {/* glow */}
+        <div className="hero-glow" style={{ top: "-18%", right: "-12%", opacity: 0.35 }} />
+        <div className="hero-glow" style={{ bottom: "-22%", left: "-15%", opacity: 0.3 }} />
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 pt-40 pb-28 md:pt-48 md:pb-40 text-center">
           {/* eyebrow */}
@@ -352,7 +352,7 @@ function LandingPage() {
           </div>
 
           {/* title */}
-          <h1 className="mt-8 font-display text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.05] glow-text text-ink">
+          <h1 className="mt-8 font-display text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.05] text-ink" style={{ color: "oklch(0.25 0.05 20)" }}>
             <span key={lang + "-start"}><LetterReveal text={t.titleStart} /></span>
             <br />
             <RotatingWord words={t.rotate} />
