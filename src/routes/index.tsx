@@ -320,7 +320,7 @@ function LandingPage() {
       </header>
 
       {/* HERO */}
-      <section id="top" className="relative overflow-hidden text-ink" style={{ background: "linear-gradient(180deg, oklch(0.99 0.005 80) 0%, oklch(0.96 0.03 15) 55%, oklch(0.94 0.04 15) 100%)" }}>
+      <section id="top" className="relative overflow-hidden text-cream" style={{ background: "oklch(0.15 0.04 15)" }}>
         {/* parallax bg image */}
         <div
           className="absolute inset-0 -z-0 ken-burns"
@@ -328,38 +328,38 @@ function LandingPage() {
             backgroundImage: `url(${heroBg})`,
             backgroundSize: "cover",
             backgroundPosition: "center",
-            opacity: 0.35,
+            opacity: 0.7,
             transform: `translate3d(0, ${parallaxY}px, 0)`,
             willChange: "transform",
           }}
         />
-        {/* center spotlight for readability */}
+        {/* dark vignette for readability */}
         <div
           className="absolute inset-0 pointer-events-none"
-          style={{ background: "radial-gradient(ellipse 60% 50% at 50% 45%, oklch(1 0 0 / 0.85) 0%, oklch(1 0 0 / 0.5) 35%, transparent 75%)" }}
+          style={{ background: "radial-gradient(ellipse 70% 60% at 50% 50%, oklch(0.12 0.04 15 / 0.55) 0%, oklch(0.1 0.04 15 / 0.8) 70%, oklch(0.08 0.03 15 / 0.92) 100%)" }}
         />
         {/* grid overlay */}
-        <div className="absolute inset-0 hero-grid opacity-25 pointer-events-none" />
+        <div className="absolute inset-0 hero-grid opacity-30 pointer-events-none" style={{ ["--grid-color" as any]: "oklch(1 0 0 / 0.06)" }} />
         {/* glow */}
-        <div className="hero-glow" style={{ top: "-18%", right: "-12%", opacity: 0.35 }} />
-        <div className="hero-glow" style={{ bottom: "-22%", left: "-15%", opacity: 0.3 }} />
+        <div className="hero-glow" style={{ top: "-12%", right: "-10%", opacity: 0.55 }} />
+        <div className="hero-glow" style={{ bottom: "-20%", left: "-15%", opacity: 0.4 }} />
 
         <div className="relative z-10 mx-auto max-w-6xl px-6 pt-40 pb-28 md:pt-48 md:pb-40 text-center">
           {/* eyebrow */}
-          <div className="inline-flex items-center gap-2 font-mono-tech text-xs uppercase tracking-[0.2em] text-ink-soft px-3 py-1.5 rounded-full border border-brand/20 bg-white/60 backdrop-blur-sm">
+          <div className="inline-flex items-center gap-2 font-mono-tech text-xs uppercase tracking-[0.2em] text-cream/85 px-3 py-1.5 rounded-full border border-white/20 bg-white/10 backdrop-blur-sm">
             <span className="pulse-dot" />
             <span>● {t.eyebrow}</span>
           </div>
 
           {/* title */}
-          <h1 className="mt-8 font-display text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.05] text-ink" style={{ color: "oklch(0.25 0.05 20)" }}>
+          <h1 className="mt-8 font-display text-5xl md:text-7xl lg:text-8xl font-medium leading-[1.05] glow-text text-cream">
             <span key={lang + "-start"}><LetterReveal text={t.titleStart} /></span>
             <br />
             <RotatingWord words={t.rotate} />
             {t.titleEnd && <span className="ml-3">{t.titleEnd}</span>}
           </h1>
 
-          <p className="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-ink-soft leading-relaxed">
+          <p className="mt-8 max-w-2xl mx-auto text-lg md:text-xl text-cream/80 leading-relaxed">
             {t.sub}
           </p>
 
@@ -372,14 +372,14 @@ function LandingPage() {
             </a>
             <a
               href="#templates"
-              className="inline-flex items-center gap-2 text-ink font-medium px-6 py-4 rounded-full border border-brand/25 bg-white/50 hover:bg-white/80 transition"
+              className="inline-flex items-center gap-2 text-cream font-medium px-6 py-4 rounded-full border border-white/25 bg-white/5 hover:bg-white/10 transition backdrop-blur-sm"
             >
               {t.secondaryCta}
             </a>
           </div>
 
           {/* scroll cue */}
-          <a href="#templates" className="bob absolute bottom-8 left-1/2 -translate-x-1/2 text-ink-soft/70 flex flex-col items-center gap-1 text-xs font-mono-tech">
+          <a href="#templates" className="bob absolute bottom-8 left-1/2 -translate-x-1/2 text-cream/65 flex flex-col items-center gap-1 text-xs font-mono-tech">
             <span className="uppercase tracking-widest">{t.scroll}</span>
             <ArrowDown className="w-4 h-4" />
           </a>
