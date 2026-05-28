@@ -9,11 +9,17 @@
 // Additionally, you should also exclude this file from your linter and/or formatter to prevent it from being checked or modified.
 
 import { Route as rootRouteImport } from './routes/__root'
+import { Route as InvitationsRouteImport } from './routes/invitations'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CreateIndexRouteImport } from './routes/create.index'
 import { Route as CreatePreviewSlugRouteImport } from './routes/create.preview.$slug'
 import { Route as CreateFillSlugRouteImport } from './routes/create.fill.$slug'
 
+const InvitationsRoute = InvitationsRouteImport.update({
+  id: '/invitations',
+  path: '/invitations',
+  getParentRoute: () => rootRouteImport,
+} as any)
 const IndexRoute = IndexRouteImport.update({
   id: '/',
   path: '/',
@@ -37,12 +43,14 @@ const CreateFillSlugRoute = CreateFillSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/invitations': typeof InvitationsRoute
   '/create/': typeof CreateIndexRoute
   '/create/fill/$slug': typeof CreateFillSlugRoute
   '/create/preview/$slug': typeof CreatePreviewSlugRoute
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/invitations': typeof InvitationsRoute
   '/create': typeof CreateIndexRoute
   '/create/fill/$slug': typeof CreateFillSlugRoute
   '/create/preview/$slug': typeof CreatePreviewSlugRoute
@@ -50,18 +58,30 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/invitations': typeof InvitationsRoute
   '/create/': typeof CreateIndexRoute
   '/create/fill/$slug': typeof CreateFillSlugRoute
   '/create/preview/$slug': typeof CreatePreviewSlugRoute
 }
 export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
-  fullPaths: '/' | '/create/' | '/create/fill/$slug' | '/create/preview/$slug'
+  fullPaths:
+    | '/'
+    | '/invitations'
+    | '/create/'
+    | '/create/fill/$slug'
+    | '/create/preview/$slug'
   fileRoutesByTo: FileRoutesByTo
-  to: '/' | '/create' | '/create/fill/$slug' | '/create/preview/$slug'
+  to:
+    | '/'
+    | '/invitations'
+    | '/create'
+    | '/create/fill/$slug'
+    | '/create/preview/$slug'
   id:
     | '__root__'
     | '/'
+    | '/invitations'
     | '/create/'
     | '/create/fill/$slug'
     | '/create/preview/$slug'
@@ -69,6 +89,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  InvitationsRoute: typeof InvitationsRoute
   CreateIndexRoute: typeof CreateIndexRoute
   CreateFillSlugRoute: typeof CreateFillSlugRoute
   CreatePreviewSlugRoute: typeof CreatePreviewSlugRoute
@@ -76,6 +97,13 @@ export interface RootRouteChildren {
 
 declare module '@tanstack/react-router' {
   interface FileRoutesByPath {
+    '/invitations': {
+      id: '/invitations'
+      path: '/invitations'
+      fullPath: '/invitations'
+      preLoaderRoute: typeof InvitationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
     '/': {
       id: '/'
       path: '/'
@@ -109,6 +137,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  InvitationsRoute: InvitationsRoute,
   CreateIndexRoute: CreateIndexRoute,
   CreateFillSlugRoute: CreateFillSlugRoute,
   CreatePreviewSlugRoute: CreatePreviewSlugRoute,
