@@ -10,6 +10,7 @@
 
 import { Route as rootRouteImport } from './routes/__root'
 import { Route as InvitationsRouteImport } from './routes/invitations'
+import { Route as AuthDemoRouteImport } from './routes/auth-demo'
 import { Route as IndexRouteImport } from './routes/index'
 import { Route as CreateIndexRouteImport } from './routes/create.index'
 import { Route as CreatePreviewSlugRouteImport } from './routes/create.preview.$slug'
@@ -18,6 +19,11 @@ import { Route as CreateFillSlugRouteImport } from './routes/create.fill.$slug'
 const InvitationsRoute = InvitationsRouteImport.update({
   id: '/invitations',
   path: '/invitations',
+  getParentRoute: () => rootRouteImport,
+} as any)
+const AuthDemoRoute = AuthDemoRouteImport.update({
+  id: '/auth-demo',
+  path: '/auth-demo',
   getParentRoute: () => rootRouteImport,
 } as any)
 const IndexRoute = IndexRouteImport.update({
@@ -43,6 +49,7 @@ const CreateFillSlugRoute = CreateFillSlugRouteImport.update({
 
 export interface FileRoutesByFullPath {
   '/': typeof IndexRoute
+  '/auth-demo': typeof AuthDemoRoute
   '/invitations': typeof InvitationsRoute
   '/create/': typeof CreateIndexRoute
   '/create/fill/$slug': typeof CreateFillSlugRoute
@@ -50,6 +57,7 @@ export interface FileRoutesByFullPath {
 }
 export interface FileRoutesByTo {
   '/': typeof IndexRoute
+  '/auth-demo': typeof AuthDemoRoute
   '/invitations': typeof InvitationsRoute
   '/create': typeof CreateIndexRoute
   '/create/fill/$slug': typeof CreateFillSlugRoute
@@ -58,6 +66,7 @@ export interface FileRoutesByTo {
 export interface FileRoutesById {
   __root__: typeof rootRouteImport
   '/': typeof IndexRoute
+  '/auth-demo': typeof AuthDemoRoute
   '/invitations': typeof InvitationsRoute
   '/create/': typeof CreateIndexRoute
   '/create/fill/$slug': typeof CreateFillSlugRoute
@@ -67,6 +76,7 @@ export interface FileRouteTypes {
   fileRoutesByFullPath: FileRoutesByFullPath
   fullPaths:
     | '/'
+    | '/auth-demo'
     | '/invitations'
     | '/create/'
     | '/create/fill/$slug'
@@ -74,6 +84,7 @@ export interface FileRouteTypes {
   fileRoutesByTo: FileRoutesByTo
   to:
     | '/'
+    | '/auth-demo'
     | '/invitations'
     | '/create'
     | '/create/fill/$slug'
@@ -81,6 +92,7 @@ export interface FileRouteTypes {
   id:
     | '__root__'
     | '/'
+    | '/auth-demo'
     | '/invitations'
     | '/create/'
     | '/create/fill/$slug'
@@ -89,6 +101,7 @@ export interface FileRouteTypes {
 }
 export interface RootRouteChildren {
   IndexRoute: typeof IndexRoute
+  AuthDemoRoute: typeof AuthDemoRoute
   InvitationsRoute: typeof InvitationsRoute
   CreateIndexRoute: typeof CreateIndexRoute
   CreateFillSlugRoute: typeof CreateFillSlugRoute
@@ -102,6 +115,13 @@ declare module '@tanstack/react-router' {
       path: '/invitations'
       fullPath: '/invitations'
       preLoaderRoute: typeof InvitationsRouteImport
+      parentRoute: typeof rootRouteImport
+    }
+    '/auth-demo': {
+      id: '/auth-demo'
+      path: '/auth-demo'
+      fullPath: '/auth-demo'
+      preLoaderRoute: typeof AuthDemoRouteImport
       parentRoute: typeof rootRouteImport
     }
     '/': {
@@ -137,6 +157,7 @@ declare module '@tanstack/react-router' {
 
 const rootRouteChildren: RootRouteChildren = {
   IndexRoute: IndexRoute,
+  AuthDemoRoute: AuthDemoRoute,
   InvitationsRoute: InvitationsRoute,
   CreateIndexRoute: CreateIndexRoute,
   CreateFillSlugRoute: CreateFillSlugRoute,
